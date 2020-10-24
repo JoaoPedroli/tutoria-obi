@@ -23,14 +23,14 @@ const int BR = 0, CI = 1, PR = 2;
 
 int t, n, m, ou;
 char au;
-vector<vc> adj;
+vector<vc> gr;
 vi vis;
 vc res;
 
 void dfs(int u){
     vis[u] = CI;
     res.pb(char(u));
-    for (char v : adj[u]){
+    for (char v : gr[u]){
         ou=int(v);
         if (vis[ou]==BR){
             dfs(ou);
@@ -46,14 +46,14 @@ int main(){_(1)
     f(z,0,t,1){
         re=0;
         cin>>n>>m;
-        adj = vector<vc>(n+97);
-        f(i,97,n+97,1)adj[i].eb(char(97));
+        gr = vector<vc>(n+97);
+        f(i,97,n+97,1)gr[i].eb(char(97));
         f(i,0,m,1){
             cin>>u>>v;
             ou=u;
             if(i==0)pos=ou;
-            adj[ou].eb(v);
-            adj[int(v)].eb(u);
+            gr[ou].eb(v);
+            gr[int(v)].eb(u);
         }
         vis = vi(n+97, BR);
         cout<<"Case #"<<z+1<<":\n";
