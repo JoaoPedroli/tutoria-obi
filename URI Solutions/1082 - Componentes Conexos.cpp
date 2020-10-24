@@ -68,6 +68,5 @@ int main(){_(1)
             }
         }
         cout<<re<<" connected components\n\n";
-        //if(z<t-1)cout<<'\n';
     }
 return 0;}
