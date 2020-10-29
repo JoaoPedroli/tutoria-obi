@@ -31,7 +31,6 @@ str id(str u){
 void join(str u, str v){
     u = id(u), v = id(v);
     if(u==v)return;
-    if(tam[x]<tam[y])swap(x, y);
     pai[v] = u, tam[u]+=tam[v];
 }
 
