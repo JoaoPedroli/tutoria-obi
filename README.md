@@ -1,1 +1,1 @@
-# C++ study
+OBI study
