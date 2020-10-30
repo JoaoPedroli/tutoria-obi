@@ -53,6 +53,3 @@ int main(){_(0)
     }
 
 return 0;}
-/*
--preste atenção nos detalhes, veja se não repetiu nehuma variável ex.:(val[b]>val[b]) numa comparação, etc.
-*/
