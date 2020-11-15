@@ -22,9 +22,7 @@ typedef vt<lld> vld;typedef vt<char> vc;typedef vt<str> vs;typedef vt<ii> vii;ty
 # define _(x) cout.precision(x);cout.setf(ios::fixed);
 # define ft first
 # define se second
-# define mdc(a, b) __gcd(a, b)  
-# define esq(x) x*2
-# define dir(x) x*2+1
+# define mdc(a, b) __gcd(a, b)
 
 const int MAX = 1e3+1, mV = 1<<20, mM = 401, INF = 0x3f3f3f3f, OUT = -INF;
 
