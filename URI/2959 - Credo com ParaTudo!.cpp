@@ -28,7 +28,7 @@ const int MAX = 1e3+1, mV = 1<<20, mM = 401, INF = 0x3f3f3f3f, OUT = -INF;
 
 int n, m, p;
 int dist[mM][mM];
-int u, v, w, re;
+int u, v;
 
 void fw(int n){
     f(k,1,n+1,1)
