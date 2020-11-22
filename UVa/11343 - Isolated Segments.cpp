@@ -87,7 +87,7 @@ int main(){_(0)
         re=0, ns = vt<pair<vetor , vetor>>(n+1);
         f(i,0,n,1){
             cin>>x1>>yy1>>x2>>y2;
-            ns[i] = pair<vetor , vetor>{ {x1, yy1} , {x2, y2} };
+            ns[i] = { {x1, yy1} , {x2, y2} };
         }
         f(i,0,n,1)
             f(j,0,n,1)
