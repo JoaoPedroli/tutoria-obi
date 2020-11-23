@@ -37,7 +37,7 @@ bool comp(a x, a y){return x.w<y.w;}
 
 vt<a> aresta;
 point par[mV];
-int pai[mV], tam[mV];
+int pai[mV];
 int t, n, m, op;
 
 //union-find
@@ -47,8 +47,7 @@ int id(int u){
 void join(int u, int v){
     u = id(u), v = id(v);
     if(u == v)return;
-    if(tam[v]<tam[u])swap(u, v);
-    pai[u] = v, tam[v]+=tam[u];
+    pai[u] = v;
 }
 //
 double mst(){
@@ -71,7 +70,7 @@ int main(){_(2)
         cin>>n;
         f(i,1,n+1,1){
             cin>>par[i].x>>par[i].y;
-            pai[i] = i, tam[i] = true;
+            pai[i] = i;
             f(j,1,i,1){
                 aresta.pb({i, j, hypot(par[i].x-par[j].x, par[i].y-par[j].y)});
             }
