@@ -25,7 +25,7 @@ typedef vt<lld> vld;typedef vt<char> vc;typedef vt<str> vs;typedef vt<ii> vii;ty
 # define mdc(a, b) __gcd(a, b)
 
 const int MAX = 1e5, mV = 1<<20, mV2 = 1<<10, mV3 = 105;
-const int INF = 0x3f3f3f3f, OUT = -INF, OUT2 = -1, MOD   = 1e9+7;
+const int INF = 0x3f3f3f3f, OUT = -INF, OUT2 = -1, MOD = 1e9+7;
 
 int pai[mV], enemy[mV];
 int n, m, op;
