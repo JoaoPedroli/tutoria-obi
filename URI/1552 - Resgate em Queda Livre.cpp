@@ -38,7 +38,7 @@ bool comp(a x, a y){return x.w<y.w;}
 vt<a> aresta;
 point par[mV];
 int pai[mV];
-int t, n, m, op;
+int t, n;
 
 //union-find
 int id(int u){
