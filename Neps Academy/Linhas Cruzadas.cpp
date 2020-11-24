@@ -48,7 +48,7 @@ int query(int i){
 }
 
 ll re;
-int main(){
+int main(){_(0)
     cin >> n;
 
     f(i,1,n+1,1)cin>>ns[i];
@@ -58,6 +58,4 @@ int main(){
     }
 
     cout<<re<<'\n';
-
-    return 0;
-}
+return 0;}
