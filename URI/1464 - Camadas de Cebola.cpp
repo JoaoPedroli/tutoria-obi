@@ -79,7 +79,7 @@ int ccw(vetor a, vetor b, vetor c)
 
 int n, re;
 vetor p;
-vt<vetor>cima, baixo, convex_hull;
+vt<vetor>cima, baixo;
 set<vetor>pontos;
 
 void ch(set<vetor> pontos){
@@ -99,7 +99,7 @@ void ch(set<vetor> pontos){
     //     print(it);
     // }
     // cout<<'\n';
-    convex_hull.clear(), cima.clear(), baixo.clear(), ch(pontos);
+    cima.clear(), baixo.clear(), ch(pontos);
 }
 
 int main(){_(0)
