@@ -87,7 +87,7 @@ void ch(set<vetor> pontos){
     
     n = sz(a);
     sort(a.begin(), a.end());
-    p1 = a[0]; p2 = a.back();
+    p1 = a[0], p2 = a.back();
     cima.eb(p1), baixo.eb(p1);
 
     for (int i=1; i<n; ++i){
