@@ -90,7 +90,7 @@ void ch(set<vetor> pontos){
     p1 = a[0], p2 = a.back();
     cima.eb(p1), baixo.eb(p1);
 
-    for (int i=1; i<n; ++i){
+    f(i,1,n,1){
         if (i==n-1 || cw(cima[sz(cima)-1], a[i], p2)){
             while (sz(cima) >=2 && !cw(cima[sz(cima)-2] , cima[sz(cima)-1], a[i])){
                 cima.pop_back();
