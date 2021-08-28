@@ -1,54 +1,39 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef long long ll;typedef long double lld;typedef string str;typedef pair<double, double> dd;
-typedef vector<int> vi;typedef vector<vector<int>> vvi;typedef vector<double> vd;typedef vector<ll> vll;
-typedef vector<lld> vld;typedef vector<char> vc;typedef vector<str> vs;typedef pair<int,int> ii;
-# define f(i,a,b,c) for(ll i=a;i<b;i+=c)
-# define fd(i,a,b,c) for(ll i=a;i>=b;i-=c)
-# define w(x) while(x--)
-# define ctoi(a) (a-'0')
-# define pb push_back
-# define eb emplace_back
-# define lb lower_bound
-# define ub upper_bound
-# define len(x) x.length()
-# define be(x) x.begin(), x.end()
-# define rbe(x) x.rbegin(), x.rend()
-# define _(x) cout.precision(x);cout.setf(ios::fixed);
-# define ft first
-# define se second
+typedef long long ll;
+typedef pair<int, int> ii;
+typedef pair<int, ii> iii;
 
-int n, k, pai[1<<20];
+#define vt vector
+#define eb emplace_back
+#define pb push_back
+#define f(i, s, f) for(int i = s; i < f; ++i)
+#define fd(i, s, f) for(int i = s; i >= f; --i)
+#define r(x, ns) for(auto& x : ns)
+#define s(x) int(x.size())
+#define be(ns) ns.begin(), ns.end()
+#define rbe(ns) ns.rbegin(), ns.rend()
+#define gr(type) vt<type>, greater<type>
+#define F first
+#define S second
 
-void init(int n){
-    f(i,0,n+1,1){
-        pai[i]=i;
-    }
+const int mVI = 1<<20, mVJ = 1<<10, INF = 0x3f3f3f3f, MOD = 1e9 + 7;
+const int MAX = 1e5+5;
+
+int n, m, a, b, p[MAX], ns[MAX];
+char c;
+
+int id(int u) { return (p[u] == u ? p[u] : p[u] = id(p[u])); }
+
+void join(int u, int v) { p[id(v)] = id(u); }
+
+int main() {
+  cin>>n>>m;
+  f(i,0,n+1) p[i] = i;
+  f(i,0,m) {
+    cin>>c>>a>>b;
+    if(c == 'F') join(a, b);
+    else cout<<(id(a) == id(b) ? "S\n" : "N\n");
+  }
 }
-
-int find(int u){
-    if(u==pai[u])return pai[u];
-    return find(pai[u]);
-}
-
-void join(int u, int v){
-    u = find(u), v = find(v);
-    pai[v] = u;
-}
-
-int x, y;
-char op;
-
-int main(){_(1)
-    cin>>n>>k;
-    init(n);
-    f(i,0,k,1){
-        cin>>op>>x>>y;
-        if(op=='F'){
-            join(x, y);
-        }else{
-            cout<<(find(x)==find(y) ? "S\n" : "N\n");
-        }
-    }
-return 0;}
