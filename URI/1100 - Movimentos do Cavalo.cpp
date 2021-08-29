@@ -1,63 +1,58 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-# define vt vector
-# define pque priority_queue 
-typedef long long ll;typedef long double lld;typedef string str;typedef pair<double, double> dd;
-typedef vt<int> vi;typedef vt<vt<int>> vvi;typedef vt<double> vd;typedef vt<ll> vll;typedef pair<int,int> ii;
-typedef vt<lld> vld;typedef vt<char> vc;typedef vt<str> vs;typedef vt<ii> vii;typedef vt<vii> vvii;
-# define f(i,a,b,c) for(ll i=a;i<b;i+=c)
-# define fd(i,a,b,c) for(ll i=a;i>=b;i-=c)
-# define w(x) while(x--)
-# define ctoi(a) (a-'0')
-# define pb push_back
-# define eb emplace_back
-# define lb lower_bound
-# define ub upper_bound
-# define ts to_string
-# define len(x) x.length()
-# define be(x) x.begin(), x.end()   
-# define rbe(x) x.rbegin(), x.rend()    
-# define bb(x, y) binary_search(be(x), y)
-# define _(x) cout.precision(x);cout.setf(ios::fixed);
-# define ft first
-# define se second
-# define mdc(a, b) __gcd(a, b)
+typedef long long ll;
+typedef pair<int, int> ii;
+typedef pair<int, ii> iii;
 
-const int MAX = 11, mV = 1<<20, mV2 = 1<<10, mV3 = 105;
-const int INF = 0x3f3f3f3f, OUT = -INF, OUT2 = -1, MOD = 1e9+7;
+#define vt vector
+#define eb emplace_back
+#define pb push_back
+#define f(i, s, f) for(int i = s; i < f; ++i)
+#define fd(i, s, f) for(int i = s; i >= f; --i)
+#define r(x, ns) for(auto& x : ns)
+#define s(x) int(x.size())
+#define be(ns) ns.begin(), ns.end()
+#define rbe(ns) ns.rbegin(), ns.rend()
+#define gr(type) vt<type>, greater<type>
+#define F first
+#define S second
 
-vvi adj, soma;
-int pic, pjc, pis, pjs;
-str posi, posj;
-void bfs(int i, int j){
-	queue<ii>fila;
-	fila.push({i, j});	
-	while(!fila.empty()){
-		int iu = fila.front().ft, ju = fila.front().se;fila.pop();
-		if(iu==pis&&ju==pjs){
-			cout<<"To get from "<<posi[0]<<posi[1]<<" to "<<posj[0]<<posj[1]<<" takes "<<soma[iu][ju]<<" knight moves.\n";
-			return;
-		}
-		adj[iu][ju] = 1;
-		//j para 2
-		if((iu+1<=8&&ju+2<=8)&&!adj[iu+1][ju+2])fila.push({iu+1, ju+2}), soma[iu+1][ju+2] = soma[iu][ju]+1;
-		if((iu+1<=8&&ju-2>=1)&&!adj[iu+1][ju-2])fila.push({iu+1, ju-2}), soma[iu+1][ju-2] = soma[iu][ju]+1;
-		if((iu-1>=1&&ju+2<=8)&&!adj[iu-1][ju+2])fila.push({iu-1, ju+2}), soma[iu-1][ju+2] = soma[iu][ju]+1;
-		if((iu-1>=1&&ju-2>=1)&&!adj[iu-1][ju-2])fila.push({iu-1, ju-2}), soma[iu-1][ju-2] = soma[iu][ju]+1;
-		//i para 2
-		if((iu+2<=8&&ju+1<=8)&&!adj[iu+2][ju+1])fila.push({iu+2, ju+1}), soma[iu+2][ju+1] = soma[iu][ju]+1;
-		if((iu+2<=8&&ju-1>=1)&&!adj[iu+2][ju-1])fila.push({iu+2, ju-1}), soma[iu+2][ju-1] = soma[iu][ju]+1;
-		if((iu-2>=1&&ju+1<=8)&&!adj[iu-2][ju+1])fila.push({iu-2, ju+1}), soma[iu-2][ju+1] = soma[iu][ju]+1;
-		if((iu-2>=1&&ju-1>=1)&&!adj[iu-2][ju-1])fila.push({iu-2, ju-1}), soma[iu-2][ju-1] = soma[iu][ju]+1;
-	}
+const int mVI = 1<<20, mVJ = 1<<10, INF = 0x3f3f3f3f, MOD = 1e9 + 7;
+const int MAX = 102;
+
+int iin, jin, ifi, jfi;
+vt<vt<int>> vis;
+string s1, s2;
+
+int bfs() {
+  queue<iii> q;
+  q.push({iin, {jin, 0}});
+  while(!q.empty()) {
+    int x = q.front().F, y = q.front().S.F, d = q.front().S.S; q.pop();
+
+    if(x == ifi && y == jfi) return d;
+    if(x<0||y<0||x>7||y>7||vis[x][y]) continue;
+    vis[x][y] = 1;
+
+    f(i,-2,3) {
+      f(j,-2,3) {
+        if(i && j && abs(i) != abs(j)) {
+          q.push({x+i, {y+j, d+1}});
+        }
+      }
+    }
+  }
+  return INF;
 }
 
-int main(){_(2)
-	while(cin>>posi>>posj){
-		adj = vvi(9, vi(9)), soma = vvi(9, vi(9));
-		pic = ctoi(posi[1]), pjc = int(posi[0])-96;
-		pis = ctoi(posj[1]), pjs = int(posj[0])-96;
-		bfs(pic, pjc);
-	}
-return 0;}
+int main() {
+  while(cin>>s1>>s2) {
+    vis = vt<vt<int>>(10, vt<int>(10, 0));
+    iin = (s1[0] - '0') - 49;
+    jin = (s1[1] - '0') - 1;
+    ifi = (s2[0] - '0') - 49;
+    jfi = (s2[1] - '0') - 1;
+    cout<<"To get from "<<s1<<" to "<<s2<<" takes "<<bfs()<<" knight moves."<<'\n';
+  }
+}
