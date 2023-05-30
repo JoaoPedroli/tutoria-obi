@@ -31,31 +31,31 @@ const int MAX = 1e3+1, mV = 1<<20, mM = 105, INF = 0x3f3f3f3f, OUT = -INF;
 int n, m;
 int u, v, w;
 vvi gr, grj;
-vi ordem, memo;
+vi ordem, vis;
 
 void dfs1(int n){
-    memo[n] = 1;
+    vis[n] = 1;
     for(int v:gr[n]){
-        if(!memo[v])dfs1(v);
+        if(!vis[v])dfs1(v);
     }
     ordem.eb(n);
 }
 void dfs2(int n){
-    memo[n] = 1;
+    vis[n] = 1;
     for(int v:grj[n]){
-        if(!memo[v])dfs2(v);
+        if(!vis[v])dfs2(v);
     }
 }
 int scc(){
     int re = 0;
 
-    memo = vi(n+1, 0);
+    vis = vi(n+1, 0);
     f(i,1,n+1,1)
-        if(!memo[i])dfs1(i);
+        if(!vis[i])dfs1(i);
 
-    memo = vi(n+1, 0);
+    vis = vi(n+1, 0);
     fd(i,n-1,0,1){
-        if(!memo[ordem[i]]){
+        if(!vis[ordem[i]]){
             dfs2(ordem[i]);
             ++re;
         }
