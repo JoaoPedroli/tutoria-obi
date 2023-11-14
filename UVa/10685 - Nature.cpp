@@ -8,8 +8,8 @@ struct DSU {
 	int ma;
 
 	DSU() {
-        p.clear(), rnk.clear(), tam.clear();
-        ma = 1;
+        	p.clear(), rnk.clear(), tam.clear();
+        	ma = 1;
 	}
 
 	ss id(ss u) {
