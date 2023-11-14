@@ -4,7 +4,7 @@ using ss = string;
 
 struct DSU {
 	map<ss, ss> p;
-    map<ss, int> rnk, tam;
+    	map<ss, int> rnk, tam;
 	int ma;
 
 	DSU() {
@@ -27,7 +27,7 @@ struct DSU {
 		p[U] = V;
 		if(rnk[U] == rnk[V]) ++rnk[V];
 		tam[V] += tam[U];
-        ma = max(ma, tam[V]);
+        	ma = max(ma, tam[V]);
 	}
 };
 
